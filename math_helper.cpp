@@ -14,77 +14,7 @@
 
 #include "lib/helpers.h"
 
-#include <iostream>
-#include <vector>
-
 int main()
 {
-    int right = 0;
-    int wrong = 0;
-
-    std::string input;
-    seedRandomNumber();
-
-    while (true)
-    {
-        int number = getRandomNumber(2, 100);
-        auto factors = getPrimeFactorization(number);
-
-        bool isPrime = (factors.size() == 1);
-
-        std::cout << "Is " << number << " prime?\n";
-        std::cout << "[Y/N] > ";
-        do {
-            input = getLetter();
-        } while (input != "Y" && input != "N");
-
-        if (isPrime && input == "N" || ! isPrime && input == "Y")
-        {
-            std::cout << "Incorrect\n\n";
-            wrong++;
-        }
-        else
-        {
-            std::cout << "Correct!\n\n";
-            right++;
-        }
-        if ( ! isPrime)
-        {
-            std::cout << "The factors of " << number << " are:\n";
-            bool firstRun = true;
-            for (int i : factors)
-            {
-                if ( ! firstRun)
-                {
-                    std::cout <<  " * ";
-                }
-                std::cout << i;
-                firstRun = false;
-            }
-            std::cout << "\n\n";
-        }
-
-        std::cout << "Would you like to try another?\n";
-        std::cout << "[Y/N] > ";
-        do {
-            input = getLetter();
-        } while (input != "Y" && input != "N");
-
-        if (input == "N")
-        {
-            break;
-        }
-    }
-
-    std::cout << "\n\n";
-
-    std::cout << "Correct: " << right << "\n";
-    std::cout << "Incorrect: " << wrong << "\n";
-    if (right > 5 && wrong == 0)
-    {
-        std::cout << " ** FLAWLESS VICTORY **\n";
-    }
-    std::cout << "\n ~ Bye ~\n\n";
-
     return 0;
 }
