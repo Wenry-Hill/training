@@ -3,6 +3,7 @@
 
 #include <climits>
 #include <string>
+#include <vector>
 
 /* Returns a non-zero length string from standard input with whitespace trimmed
  * from the beginning and end */
@@ -20,5 +21,17 @@ std::string getLetter(std::string min, std::string max);
 
 /* Returns a floating point number from standard input */
 double getDecimal(double min=LONG_MIN, double max=LONG_MAX);
+
+/* Given a number greater than 1, this function will return the prime
+ * factorization of any composite number. If the number itself is prime, it will
+ * be the only element in the vector.
+ */
+std::vector<unsigned int> getPrimeFactorization(unsigned int number);
+
+/* Returns an integer chosen at random between min and max, inclusive */
+int getRandomNumber(int min=1, int max=10);
+
+/* Changes which random numbers will be generated. */
+void seedRandomNumber();
 
 #endif
