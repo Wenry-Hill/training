@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <boost/concept_check.hpp>
 
 int main()
 {
@@ -79,13 +80,13 @@ int main()
     }
 
     // You can also use "else" after an if statement if you want to do something if the condition is not true
-    if (a >= 0)
+    if (b >= 0)
     {
-        a = a * 2;
+        b = b * 2;
     }
     else
     {
-        a = a + 2;
+        b = b + 2;
     }
     // What is the value of a now?
 
@@ -112,6 +113,99 @@ int main()
     std::unordered_map<std::string, std::string> o = {{"Hi", "Hello"}, {"Sup?", "What is new?"}};
     o["lol"] = "That was very humorous.";
 
+    // Often you will want to do something more than once, and usually an unknown number of times.
+    // To accomplish this, C++ provides loops
+    // The most basic type is the "while" loop. It acts like an if statement, but instead of running
+    // only once if its condition is true, it runs until it's condition is false.
+    // Beware of creating a loop that never ends!
+    b = 1;
+    while (b < 10)
+    {
+        b = b * 2;
+    }
+
+    // You can also loop over the objects in a container with a "for" loop
+    for (int i : n)
+    {
+        b = b - i;
+    }
+
+    // Sometimes you might want to end a loop even when its condition is not false
+    // To do that, use a break statement
+    while (b != 10)
+    {
+        b = b + 3;
+        if (b >= 11)
+        {
+            break;
+        }
+    }
+
+    // Can also skip over the rest of a block inside a loop by using continue
+    // The program will restart at evaluating the loop condition
+    b = 1;
+    while (b < 10)
+    {
+        if (b % 5 == 0)
+        {
+            b = b + 3;
+            continue;
+        }
+        b = b + 1;
+    }
 
     return 0;
+}
+
+// As you may have noticed, this file has become very long and it is becoming hard
+// to remember where everything is. One helpful way to avoid this is to encapsulate
+// parts of your program inside a function. A function will execute a series of
+// commands when it is called from somewhere else in your code.
+// A function has multiple parts:
+// - return type: tells the program what type of value to expect the function to
+//     equal when the function ends
+// - name: gives other code a way of calling the function
+// - argument list: the list of variables that can be passed to a function
+int getSix(bool makeNegative=false)
+{
+    if (makeNegative)
+    {
+        return -6;
+    }
+    return 6;
+}
+
+// The "return" statement tells the program to set the value of the function. The
+// value returned must be the same type as the function. If your function does not
+// need to return anything, it can use the void type. Then a return statement is
+// not required.
+void doNothing()
+{
+}
+
+// functions cannot be defined inside other functions. However, they can be called inside
+// other functions, or even inside themselves (this is called recursion).
+void callOtherFunctions()
+{
+    int a = getSix(); // Note these are not the same variables as those in main
+    int b = getSix(true); // Each function has its own scope
+    int c = getSix(false);
+
+    doNothing();
+}
+
+// You cannot call a function in the file before it is defined. However, you will often
+// see function prototypes (the first line of a function) without an implementation.
+// This is enough information for the compiler to build your program, as long as it
+// eventually finds the implementation of that function.
+
+// Normally when you pass an argument to a function, a copy of that object is passed.
+// If you want to pass the variable itself, so that modifications made in the function
+// will still apply after the function has ended, you can pass your variable by reference
+// using the & operator.
+void swap(int& a, int& b)
+{
+    int tmp = b;
+    b = a;
+    a = tmp;
 }
