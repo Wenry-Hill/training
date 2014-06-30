@@ -1,7 +1,7 @@
 #include "helpers.h"
 
 #include <cstdlib>
-#include <boost/algorithm/string.hpp>
+//#include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -17,7 +17,7 @@ std::string getString()
 
         std::getline(std::cin, value);
 
-        boost::algorithm::trim(value);
+     //   boost::algorithm::trim(value);
 
         if (value.empty() == false)
         {

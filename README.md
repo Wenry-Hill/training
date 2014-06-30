@@ -1,7 +1,7 @@
 Krypton Cougars (FRC 2539)
 ========
 
-Group Members:
+Group Members: Henry was here
 
 Group Name:
 
