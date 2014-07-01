@@ -17,7 +17,7 @@ std::string getString()
 
         std::getline(std::cin, value);
 
-     //   boost::algorithm::trim(value);
+     //s   boost::algorithm::trim(value);
 
         if (value.empty() == false)
         {
