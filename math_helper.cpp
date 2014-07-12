@@ -14,23 +14,48 @@
 #include "iostream"
 #include "lib/helpers.h"
 
+
 int main()
 {
     int W = 0;
     int R = 0;
     int x = 0;
+    int i = 0;
     while (x == 0) {
-      
+
         seedRandomNumber();
         int a = getRandomNumber(2,100);
         std::cout << a << " THIS IS YOUR NUMBER\n";
         std::cout << "Determine if the number is prime or composite\n";
         std::cout << "If Prime type P\n";
         std::cout << "If Composite type C\n";
-        std::string Letter = getLetter("P");
+        std::string Letter = getLetter();
+       
 
-        if (Letter == "P")
+        if (Letter == "C")
         {
+            std::vector<unsigned int> Answer = getPrimeFactorization(a);
+
+            if (Answer.size() == 1)
+            {
+                std::cout << "You have failed! It was prime!\n";
+                W = W + 1;
+            }
+            else
+            {
+                std::cout << "Correct, the prime factorization of the number is ";
+                for (unsigned i=0; i<Answer.size(); ++i)
+                    std::cout << ' ' << Answer[i];
+                std::cout << '\n';
+                R = R +1;
+            }
+        }
+
+
+
+        if(Letter == "P")
+        {
+
             std::vector<unsigned int> Answer = getPrimeFactorization(a);
 
             if (Answer.size() == 1)
@@ -41,27 +66,17 @@ int main()
             }
             else
             {
-                std::cout << "This is the prime factorization of the number Why you so stupad?\n";
+                std::cout << "This is the prime factorization of the number ";
+                for (unsigned i=0; i<Answer.size(); ++i)
+                    std::cout << ' ' << Answer[i];
+                std::cout << '\n';
+                std::cout << "Why you so stupad?\n";
                 W = W + 1;
             }
-
         }
+         
 
-        else
-        {
-            std::vector<unsigned int> Answer = getPrimeFactorization(a);
 
-            if (Answer.size() == 1)
-            {
-                std::cout << "You have failed!\n";
-                W = W + 1;
-            }
-            else
-            {
-                std::cout << "Correct the prime factorization of the number is.\n";
-                R = R +1;
-            }
-        }
 
 
         std::cout << "Would you like to continue? Y or N?\n";
@@ -73,13 +88,12 @@ int main()
             x = x+1;
 
         }
-        else
-        {
-            x = x + 0;
-        }
+
+
     }
 
     return 0;
 
 }
+
 
